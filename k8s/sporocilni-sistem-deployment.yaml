@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sporocilni-sistem-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sporocilni-sistem
+  template:
+    metadata:
+      labels:
+        app: sporocilni-sistem
+    spec:
+      containers:
+      - image: adnansis/prpo
+        name: sporocilni-sistem
+        ports:
+        - containerPort: 8081
+          name: server
+          protocol: TCP
+
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sporocilni-sistem
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8081
+      protocol: TCP
+      targetPort: server
+  selector:
+    app: sporocilni-sistem
