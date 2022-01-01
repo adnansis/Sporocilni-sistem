@@ -13,7 +13,7 @@ spec:
         app: sporocilni-sistem
     spec:
       containers:
-      - image: adnansis/prpo
+      - image: adnansis/prpo-sporocilni-sistem
         name: sporocilni-sistem
         ports:
         - containerPort: 8081
